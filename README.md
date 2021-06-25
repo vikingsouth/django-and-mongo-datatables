@@ -18,7 +18,7 @@ This is what you need to download from [DataTables](https://datatables.net/downl
 
 ## Install the datatables  using NPM also.
 
-npm install --save jquery
+```npm install --save jquery
 npm install --save jszip
 npm install --save pdfmake
 npm install --save datatables.net-bs5
@@ -37,6 +37,7 @@ npm install --save datatables.net-scroller-bs5
 npm install --save datatables.net-searchbuilder-bs5
 npm install --save datatables.net-searchpanes-bs5
 npm install --save datatables.net-select-bs5
+```
 
 
 ![datatables static files](datatables_static_files.jpg)
