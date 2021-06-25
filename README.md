@@ -6,17 +6,19 @@ A sample website that shows how to use mongo-datatables with Django. Checkout th
 
 ----
 
-## Install
+## Install mongo-datatables
 
-You can install with pip:
+Install latest version of Mongo-datatables from git:
 
-    pip install mongo-datatables
+    git clone https://github.com/pauljolsen/mongo-datatables
+    cd mongo-datatables/
+    python3 setup.py install
 
 ## DataTables static files
 
 This is what you need to download from [DataTables](https://datatables.net/download/)  Note, Editor is paid version. You can ignore if you don't want it.
 
-## Install the datatables using NPM
+#### Also, One can install the datatables using NPM
 
 ```
 npm install --save jquery
@@ -47,10 +49,4 @@ After installing NPM update polls/templates/polls/db.html to include right path 
 <script type="text/javascript" src="{% static '/DataTables/Editor-2.0.4/js/dataTables.editor.js' %}"></script>
 ```
 
-
 ![datatables static files](datatables_static_files.jpg)
-
-
-## mongo-datatables
-
-Find mongo-datatables at <https://github.com/pauljolsen/mongo-datatables>.
