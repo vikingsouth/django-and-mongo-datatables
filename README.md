@@ -16,9 +16,10 @@ You can install with pip:
 
 This is what you need to download from [DataTables](https://datatables.net/download/)  Note, Editor is paid version. You can ignore if you don't want it.
 
-## Install the datatables  using NPM also.
+## Install the datatables using NPM
 
-```npm install --save jquery
+```
+npm install --save jquery
 npm install --save jszip
 npm install --save pdfmake
 npm install --save datatables.net-bs5
@@ -37,6 +38,13 @@ npm install --save datatables.net-scroller-bs5
 npm install --save datatables.net-searchbuilder-bs5
 npm install --save datatables.net-searchpanes-bs5
 npm install --save datatables.net-select-bs5
+```
+
+After installing NPM update polls/templates/polls/db.html to include right path for datatables.min.js and editor
+
+```
+<script type="text/javascript" src="{% static '/DataTables/datatables.min.js' %}"></script>
+<script type="text/javascript" src="{% static '/DataTables/Editor-2.0.4/js/dataTables.editor.js' %}"></script>
 ```
 
 
