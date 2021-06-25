@@ -1,5 +1,5 @@
 {% extends "core/base.html" %}
-{% load staticfiles %}
+{% load static %}
 
     <!-- CSS -->
     {% block stylesheets %}
@@ -40,6 +40,7 @@
 {% endblock content %}
 {% block scripts%}
 <script type="text/javascript" src="{% static '/DataTables/datatables.min.js' %}"></script>
+<script type="text/javascript" src="{% static '/DataTables/Editor-2.0.4/js/dataTables.editor.js' %}"></script>
 <!-- CSRF protection for AJAX -->
 <!-- https://github.com/js-cookie/js-cookie/ -->
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
@@ -78,7 +79,7 @@
                 myFields.push(myField);
             });
 
-            // Editor
+            //Editor
             var editor = new $.fn.dataTable.Editor({
                 ajax: {
                     url: '/editor/' + $myCollection + '/_id_',
@@ -93,9 +94,26 @@
                 fields: myFields
             });
 
+            // Setup - add a text input to each footer cell
+            $('#dt_table thead tr').clone(true).appendTo( '#dt_table thead' );
+            $('#dt_table thead tr:eq(1) th').each( function (i) {
+                var title = $(this).text();
+                $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+                $( 'input', this ).on( 'keyup change', function () {
+                    if ( table.column(i).search() !== this.value ) {
+                        table
+                            .column(i)
+                            .search( this.value, true )
+                            .draw();
+                    }
+                } );
+            } );
+
             // DataTable
             var table = $('#dt_table').DataTable({
                 "bPaginate": true,
+                orderCellsTop: true,
+                fixedHeader: true,
                 searchDelay: 200, // default for server-side is 400,
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 "pageLength": 10,
